@@ -174,8 +174,8 @@
   right: 0;
   min-width: 160px;
   max-width: 280px;
-  background-color: var(--aven-color-neutral-800);
-  color: #fff;
+  background-color: var(--aven-color-tooltip-bg);
+  color: var(--aven-color-tooltip-text);
   font-size: var(--aven-text-xs);
   font-family: var(--aven-font-sans);
   line-height: var(--aven-leading-sm);
@@ -199,7 +199,7 @@
   top: 100%;
   right: 4px;
   border: 5px solid transparent;
-  border-top-color: var(--aven-color-neutral-800);
+  border-top-color: var(--aven-color-tooltip-bg);
 }
 
 .aven-dropdown-error-icon:hover .aven-dropdown-tooltip,

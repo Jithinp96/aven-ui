@@ -64,7 +64,7 @@
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.06),
     0 1px 6px rgba(0, 0, 0, 0.03);
-  color: var(--aven-color-neutral-900);
+  color: var(--aven-color-text);
   font-family: var(--aven-font-sans);
   font-size: var(--aven-text-sm);
   width: 100%;
@@ -118,19 +118,19 @@
 .aven-toast-title {
   font-weight: var(--aven-font-semibold);
   margin: 0 0 var(--aven-spacing-0-5);
-  color: var(--aven-color-neutral-900);
+  color: var(--aven-color-text);
   font-size: var(--aven-text-sm);
 }
 
 .aven-toast-message {
   margin: 0;
-  color: var(--aven-color-neutral-700);
+  color: var(--aven-color-text-muted);
   line-height: var(--aven-leading-sm);
   font-size: var(--aven-text-sm);
 }
 
 .aven-toast-body > .aven-toast-message:only-child {
-  color: var(--aven-color-neutral-800);
+  color: var(--aven-color-text);
 }
 
 /* ── Close button — base ── */
@@ -229,4 +229,98 @@
     opacity: 1;
     transform: translateY(0) scale(1);
   }
+}
+
+/* ── Dark mode pastel overrides ── */
+@media (prefers-color-scheme: dark) {
+  .aven-toast {
+    background: rgba(30, 41, 59, 0.75);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.2);
+  }
+  .aven-toast--success {
+    background: rgba(5, 46, 22, 0.65);
+    border-color: rgba(34, 197, 94, 0.25);
+    border-left-color: var(--aven-color-success);
+  }
+  .aven-toast--error {
+    background: rgba(69, 10, 10, 0.65);
+    border-color: rgba(239, 68, 68, 0.25);
+    border-left-color: var(--aven-color-danger);
+  }
+  .aven-toast--warning {
+    background: rgba(67, 20, 7, 0.65);
+    border-color: rgba(245, 158, 11, 0.3);
+    border-left-color: var(--aven-color-warning);
+  }
+  .aven-toast--info {
+    background: rgba(30, 27, 75, 0.65);
+    border-color: rgba(99, 102, 241, 0.3);
+    border-left-color: var(--aven-color-primary);
+  }
+  .aven-toast--default .aven-toast-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--aven-color-neutral-100);
+  }
+}
+
+[data-theme='dark'] .aven-toast {
+  background: rgba(30, 41, 59, 0.75);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3), 0 1px 6px rgba(0, 0, 0, 0.2);
+}
+[data-theme='dark'] .aven-toast--success {
+  background: rgba(5, 46, 22, 0.65);
+  border-color: rgba(34, 197, 94, 0.25);
+  border-left-color: var(--aven-color-success);
+}
+[data-theme='dark'] .aven-toast--error {
+  background: rgba(69, 10, 10, 0.65);
+  border-color: rgba(239, 68, 68, 0.25);
+  border-left-color: var(--aven-color-danger);
+}
+[data-theme='dark'] .aven-toast--warning {
+  background: rgba(67, 20, 7, 0.65);
+  border-color: rgba(245, 158, 11, 0.3);
+  border-left-color: var(--aven-color-warning);
+}
+[data-theme='dark'] .aven-toast--info {
+  background: rgba(30, 27, 75, 0.65);
+  border-color: rgba(99, 102, 241, 0.3);
+  border-left-color: var(--aven-color-primary);
+}
+[data-theme='dark'] .aven-toast--default .aven-toast-close:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--aven-color-neutral-100);
+}
+
+/* ── Light mode — explicit opt-in (overrides OS dark preference) ── */
+[data-theme='light'] .aven-toast {
+  background: rgba(248, 250, 252, 0.30);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 6px rgba(0, 0, 0, 0.03);
+}
+[data-theme='light'] .aven-toast--success {
+  background: rgba(220, 252, 231, 0.32);
+  border-color: rgba(134, 239, 172, 0.45);
+  border-left-color: var(--aven-color-success);
+}
+[data-theme='light'] .aven-toast--error {
+  background: rgba(254, 226, 226, 0.32);
+  border-color: rgba(252, 165, 165, 0.45);
+  border-left-color: var(--aven-color-danger);
+}
+[data-theme='light'] .aven-toast--warning {
+  background: rgba(254, 243, 199, 0.32);
+  border-color: rgba(253, 211, 77, 0.5);
+  border-left-color: var(--aven-color-warning);
+}
+[data-theme='light'] .aven-toast--info {
+  background: rgba(224, 231, 255, 0.32);
+  border-color: rgba(165, 180, 252, 0.45);
+  border-left-color: var(--aven-color-primary);
+}
+[data-theme='light'] .aven-toast--default .aven-toast-close:hover {
+  background-color: rgba(0, 0, 0, 0.07);
+  color: var(--aven-color-neutral-700);
 }

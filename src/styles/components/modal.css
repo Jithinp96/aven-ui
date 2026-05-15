@@ -1,0 +1,132 @@
+/* ── Overlay ── */
+.aven-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--aven-spacing-4);
+  z-index: var(--aven-z-modal);
+  animation: aven-overlay-in 150ms var(--aven-ease) forwards;
+}
+
+.aven-modal-overlay--closing {
+  animation: aven-overlay-out 150ms var(--aven-ease) forwards;
+}
+
+/* ── Dialog ── */
+.aven-modal {
+  background: var(--aven-color-bg);
+  border-radius: var(--aven-radius-xl);
+  box-shadow: var(--aven-shadow-xl);
+  width: 100%;
+  max-height: calc(100dvh - var(--aven-spacing-8));
+  display: flex;
+  flex-direction: column;
+  outline: none;
+  animation: aven-modal-in 150ms var(--aven-ease) forwards;
+}
+
+.aven-modal--closing {
+  animation: aven-modal-out 150ms var(--aven-ease) forwards;
+}
+
+/* ── Size variants ── */
+.aven-modal--sm { max-width: 400px; }
+.aven-modal--md { max-width: 520px; }
+.aven-modal--lg { max-width: 680px; }
+.aven-modal--xl { max-width: 860px; }
+
+/* ── Header ── */
+.aven-modal-header {
+  padding: var(--aven-spacing-5) var(--aven-spacing-6) var(--aven-spacing-4);
+  border-bottom: 1px solid var(--aven-color-border);
+  flex-shrink: 0;
+}
+
+.aven-modal-header h1,
+.aven-modal-header h2,
+.aven-modal-header h3 {
+  margin: 0;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-lg);
+  font-weight: var(--aven-font-semibold);
+  color: var(--aven-color-text);
+  line-height: var(--aven-leading-md);
+}
+
+/* ── Body ── */
+.aven-modal-body {
+  padding: var(--aven-spacing-5) var(--aven-spacing-6);
+  flex: 1;
+  overflow-y: auto;
+  color: var(--aven-color-text-muted);
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  line-height: var(--aven-leading-md);
+}
+
+/* ── Footer ── */
+.aven-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--aven-spacing-2-5);
+  padding: var(--aven-spacing-4) var(--aven-spacing-6);
+  border-top: 1px solid var(--aven-color-border);
+  flex-shrink: 0;
+}
+
+/* ── ConfirmModal specifics ── */
+.aven-confirm-modal-title {
+  margin: 0;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-lg);
+  font-weight: var(--aven-font-semibold);
+  color: var(--aven-color-text);
+  line-height: var(--aven-leading-md);
+}
+
+.aven-confirm-modal-description {
+  margin: 0;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  color: var(--aven-color-text-muted);
+  line-height: var(--aven-leading-md);
+}
+
+/* ── Animations ── */
+@keyframes aven-overlay-in {
+  from { opacity: 0 }
+  to   { opacity: 1 }
+}
+
+@keyframes aven-overlay-out {
+  from { opacity: 1 }
+  to   { opacity: 0 }
+}
+
+@keyframes aven-modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes aven-modal-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+}

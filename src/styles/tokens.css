@@ -1,0 +1,140 @@
+:root {
+  /* ── Primary ── */
+  --aven-color-primary-50: #eef2ff;
+  --aven-color-primary-100: #e0e7ff;
+  --aven-color-primary-200: #c7d2fe;
+  --aven-color-primary-300: #a5b4fc;
+  --aven-color-primary-400: #818cf8;
+  --aven-color-primary-500: #6366f1;
+  --aven-color-primary-600: #4f46e5;
+  --aven-color-primary-700: #4338ca;
+  --aven-color-primary-800: #3730a3;
+  --aven-color-primary-900: #312e81;
+
+  --aven-color-primary: var(--aven-color-primary-500);
+  --aven-color-primary-hover: var(--aven-color-primary-600);
+  --aven-color-primary-active: var(--aven-color-primary-700);
+  --aven-color-primary-subtle: var(--aven-color-primary-50);
+  --aven-color-primary-foreground: #ffffff;
+
+  /* ── Danger ── */
+  --aven-color-danger: #ef4444;
+  --aven-color-danger-hover: #dc2626;
+  --aven-color-danger-active: #b91c1c;
+  --aven-color-danger-subtle: #fef2f2;
+  --aven-color-danger-foreground: #ffffff;
+
+  /* ── Warning ── */
+  --aven-color-warning: #f59e0b;
+  --aven-color-warning-hover: #d97706;
+  --aven-color-warning-active: #b45309;
+  --aven-color-warning-subtle: #fffbeb;
+  --aven-color-warning-foreground: #ffffff;
+
+  /* ── Success ── */
+  --aven-color-success: #22c55e;
+  --aven-color-success-hover: #16a34a;
+  --aven-color-success-active: #15803d;
+  --aven-color-success-subtle: #f0fdf4;
+  --aven-color-success-foreground: #ffffff;
+
+  /* ── Neutral scale ── */
+  --aven-color-neutral-50: #f8fafc;
+  --aven-color-neutral-100: #f1f5f9;
+  --aven-color-neutral-200: #e2e8f0;
+  --aven-color-neutral-300: #cbd5e1;
+  --aven-color-neutral-400: #94a3b8;
+  --aven-color-neutral-500: #64748b;
+  --aven-color-neutral-600: #475569;
+  --aven-color-neutral-700: #334155;
+  --aven-color-neutral-800: #1e293b;
+  --aven-color-neutral-900: #0f172a;
+
+  /* ── Semantic surface & text ── */
+  --aven-color-bg: #ffffff;
+  --aven-color-bg-subtle: var(--aven-color-neutral-50);
+  --aven-color-bg-muted: var(--aven-color-neutral-100);
+  --aven-color-border: var(--aven-color-neutral-200);
+  --aven-color-border-strong: var(--aven-color-neutral-300);
+  --aven-color-text: var(--aven-color-neutral-900);
+  --aven-color-text-muted: var(--aven-color-neutral-500);
+  --aven-color-text-subtle: var(--aven-color-neutral-400);
+  --aven-color-text-on-primary: #ffffff;
+  --aven-color-focus-ring: var(--aven-color-primary-300);
+
+  /* ── Spacing ── */
+  --aven-spacing-0: 0px;
+  --aven-spacing-px: 1px;
+  --aven-spacing-0-5: 0.125rem;
+  --aven-spacing-1: 0.25rem;
+  --aven-spacing-1-5: 0.375rem;
+  --aven-spacing-2: 0.5rem;
+  --aven-spacing-2-5: 0.625rem;
+  --aven-spacing-3: 0.75rem;
+  --aven-spacing-3-5: 0.875rem;
+  --aven-spacing-4: 1rem;
+  --aven-spacing-5: 1.25rem;
+  --aven-spacing-6: 1.5rem;
+  --aven-spacing-8: 2rem;
+  --aven-spacing-10: 2.5rem;
+  --aven-spacing-12: 3rem;
+  --aven-spacing-16: 4rem;
+
+  /* ── Border radius ── */
+  --aven-radius-none: 0px;
+  --aven-radius-sm: 0.25rem;
+  --aven-radius-md: 0.375rem;
+  --aven-radius-lg: 0.5rem;
+  --aven-radius-xl: 0.75rem;
+  --aven-radius-2xl: 1rem;
+  --aven-radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --aven-shadow-none: none;
+  --aven-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --aven-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --aven-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --aven-shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+  /* ── Typography — font families ── */
+  --aven-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  --aven-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* ── Typography — sizes ── */
+  --aven-text-xs: 0.75rem;
+  --aven-text-sm: 0.875rem;
+  --aven-text-md: 1rem;
+  --aven-text-lg: 1.125rem;
+  --aven-text-xl: 1.25rem;
+
+  /* ── Typography — line heights ── */
+  --aven-leading-xs: 1rem;
+  --aven-leading-sm: 1.25rem;
+  --aven-leading-md: 1.5rem;
+  --aven-leading-lg: 1.75rem;
+
+  /* ── Typography — font weights ── */
+  --aven-font-normal: 400;
+  --aven-font-medium: 500;
+  --aven-font-semibold: 600;
+  --aven-font-bold: 700;
+
+  /* ── Transitions ── */
+  --aven-duration-fast: 100ms;
+  --aven-duration-normal: 150ms;
+  --aven-duration-slow: 300ms;
+  --aven-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --aven-transition: var(--aven-duration-normal) var(--aven-ease);
+
+  /* ── Z-index ── */
+  --aven-z-dropdown: 1000;
+  --aven-z-modal: 1100;
+  --aven-z-toast: 1200;
+  --aven-z-tooltip: 1300;
+
+  /* ── Focus ring ── */
+  --aven-focus-ring-width: 2px;
+  --aven-focus-ring-offset: 2px;
+  --aven-focus-ring-color: var(--aven-color-focus-ring);
+}

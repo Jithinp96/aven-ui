@@ -1,3 +1,4 @@
+import { copyFileSync, mkdirSync } from 'fs'
 import { defineConfig } from 'tsup'
 
 export default defineConfig({
@@ -12,5 +13,11 @@ export default defineConfig({
     options.banner = {
       js: '"use client";',
     }
+  },
+  onSuccess() {
+    mkdirSync('dist/styles', { recursive: true })
+    copyFileSync('src/styles/tokens.css', 'dist/styles/tokens.css')
+    copyFileSync('src/styles/index.css', 'dist/styles/index.css')
+    console.log('Styles copied to dist/styles/')
   },
 })

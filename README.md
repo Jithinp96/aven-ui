@@ -440,6 +440,196 @@ All standard HTML `<textarea>` attributes are accepted and forwarded.
 
 ---
 
+### Dropdown
+
+A fully featured select component with single and multi-select, search/filter, clearable selection, loading state, disabled options, and the same error tooltip pattern as Input and TextArea.
+
+```tsx
+import { Dropdown } from 'aven-ui'
+```
+
+#### Basic usage
+
+```tsx
+const options = [
+  { label: 'Apple', value: 'apple' },
+  { label: 'Banana', value: 'banana' },
+  { label: 'Cherry', value: 'cherry' },
+]
+
+<Dropdown options={options} label="Fruit" placeholder="Select a fruit..." />
+```
+
+#### Error state
+
+```tsx
+<Dropdown
+  options={options}
+  label="Fruit"
+  error="Please select a fruit to continue."
+/>
+```
+
+#### With helper text
+
+```tsx
+<Dropdown
+  options={options}
+  label="Favourite fruit"
+  helperText="We use this to personalise your experience."
+/>
+```
+
+#### Searchable
+
+Adds a search input at the top of the list to filter options by label.
+
+```tsx
+<Dropdown options={options} label="Fruit" searchable placeholder="Search and select..." />
+```
+
+#### Clearable
+
+Shows an × button inside the trigger when a value is selected.
+
+```tsx
+<Dropdown options={options} label="Fruit" clearable defaultValue="apple" />
+```
+
+#### Multi-select
+
+```tsx
+<Dropdown
+  options={options}
+  label="Favourite fruits"
+  multiple
+  placeholder="Select multiple..."
+/>
+```
+
+Multi-select + search + clearable:
+
+```tsx
+<Dropdown
+  options={options}
+  label="Favourite fruits"
+  multiple
+  searchable
+  clearable
+/>
+```
+
+#### Disabled options
+
+Set `disabled: true` on any option to prevent it from being selected.
+
+```tsx
+const options = [
+  { label: 'Apple', value: 'apple' },
+  { label: 'Durian (unavailable)', value: 'durian', disabled: true },
+]
+```
+
+#### Loading state
+
+While options are being fetched, pass `loading` to show a spinner and block the list.
+
+```tsx
+<Dropdown options={[]} label="Fruit" loading placeholder="Loading options..." />
+```
+
+#### Sizes
+
+```tsx
+<Dropdown options={options} size="sm" label="Small" />
+<Dropdown options={options} size="md" label="Medium" />  {/* default */}
+<Dropdown options={options} size="lg" label="Large" />
+```
+
+#### Full width
+
+```tsx
+<Dropdown options={options} label="Fruit" fullWidth />
+```
+
+#### Controlled
+
+```tsx
+const [value, setValue] = useState('')
+
+<Dropdown
+  options={options}
+  label="Fruit"
+  value={value}
+  onChange={(v) => setValue(v as string)}
+  clearable
+/>
+```
+
+#### Controlled multi-select
+
+```tsx
+const [value, setValue] = useState<string[]>([])
+
+<Dropdown
+  options={options}
+  label="Fruits"
+  multiple
+  searchable
+  clearable
+  value={value}
+  onChange={(v) => setValue(v as string[])}
+/>
+```
+
+#### With React Hook Form
+
+```tsx
+const { setValue, watch, formState: { errors } } = useForm()
+const fruit = watch('fruit')
+
+<Dropdown
+  options={options}
+  label="Fruit"
+  value={fruit ?? ''}
+  onChange={(v) => setValue('fruit', v as string)}
+  error={errors.fruit?.message}
+/>
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `options` | `DropdownOption[]` | `[]` | The list of options to display |
+| `value` | `string \| string[]` | — | Controlled value |
+| `defaultValue` | `string \| string[]` | — | Uncontrolled initial value |
+| `onChange` | `(value: string \| string[]) => void` | — | Called when the selection changes |
+| `label` | `string` | — | Label rendered above the trigger |
+| `placeholder` | `string` | `'Select...'` | Placeholder shown when nothing is selected |
+| `error` | `string` | — | Error message — triggers red border and hover tooltip |
+| `helperText` | `string` | — | Helper text below trigger (hidden when `error` is set) |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Trigger height and font size |
+| `multiple` | `boolean` | `false` | Enables multi-select with checkboxes |
+| `searchable` | `boolean` | `false` | Adds a search input to filter options |
+| `clearable` | `boolean` | `false` | Shows a clear (×) button when a value is selected |
+| `loading` | `boolean` | `false` | Shows a spinner instead of the options list |
+| `disabled` | `boolean` | `false` | Disables the trigger |
+| `fullWidth` | `boolean` | `false` | Stretches the trigger to fill its container |
+| `maxHeight` | `number` | `240` | Max height (px) of the options panel |
+| `id` | `string` | — | Overrides the auto-generated `id` |
+| `className` | `string` | — | Additional CSS classes on the root element |
+
+**`DropdownOption`**
+
+| Field | Type | Description |
+|---|---|---|
+| `label` | `string` | Display text |
+| `value` | `string` | Value passed to `onChange` |
+| `disabled` | `boolean` | Prevents selection when `true` |
+
+---
+
 ## License
 
 MIT

@@ -1,0 +1,377 @@
+/* ── Root ── */
+.aven-dropdown-root {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.aven-dropdown-root--full-width {
+  width: 100%;
+}
+
+.aven-dropdown-root--full-width .aven-dropdown-trigger {
+  width: 100%;
+}
+
+/* ── Label ── */
+.aven-dropdown-label {
+  display: block;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  font-weight: var(--aven-font-medium);
+  color: var(--aven-color-text);
+  margin-bottom: var(--aven-spacing-1-5);
+}
+
+/* ── Trigger wrapper ── */
+.aven-dropdown-trigger-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* ── Trigger button ── */
+.aven-dropdown-trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--aven-spacing-2);
+  font-family: var(--aven-font-sans);
+  font-weight: var(--aven-font-normal);
+  background-color: var(--aven-color-bg);
+  border: 1px solid var(--aven-color-border);
+  border-radius: var(--aven-radius-md);
+  color: var(--aven-color-text);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color var(--aven-transition),
+    box-shadow var(--aven-transition);
+  outline: none;
+  width: 100%;
+}
+
+.aven-dropdown-trigger:hover:not(:disabled) {
+  border-color: var(--aven-color-border-strong);
+}
+
+.aven-dropdown-trigger:focus-visible {
+  border-color: var(--aven-color-primary);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      var(--aven-focus-ring-color);
+}
+
+.aven-dropdown-trigger--open {
+  border-color: var(--aven-color-primary);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      var(--aven-focus-ring-color);
+}
+
+/* ── Error state ── */
+.aven-dropdown-trigger--error {
+  border-color: var(--aven-color-danger);
+}
+
+.aven-dropdown-trigger--error:focus-visible,
+.aven-dropdown-trigger--error.aven-dropdown-trigger--open {
+  border-color: var(--aven-color-danger);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      rgb(239 68 68 / 0.25);
+}
+
+/* ── Disabled state ── */
+.aven-dropdown-trigger--disabled {
+  background-color: var(--aven-color-bg-muted);
+  color: var(--aven-color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* ── Sizes ── */
+.aven-dropdown-trigger--sm {
+  height: 2rem;
+  padding: 0 var(--aven-spacing-2-5);
+  font-size: var(--aven-text-xs);
+}
+
+.aven-dropdown-trigger--md {
+  height: 2.5rem;
+  padding: 0 var(--aven-spacing-3);
+  font-size: var(--aven-text-sm);
+}
+
+.aven-dropdown-trigger--lg {
+  height: 3rem;
+  padding: 0 var(--aven-spacing-4);
+  font-size: var(--aven-text-md);
+}
+
+/* ── Value and placeholder ── */
+.aven-dropdown-value {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.aven-dropdown-placeholder {
+  color: var(--aven-color-text-subtle);
+}
+
+/* ── Actions (right side: clear + error icon + chevron) ── */
+.aven-dropdown-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--aven-spacing-1);
+  flex-shrink: 0;
+  color: var(--aven-color-text-muted);
+}
+
+/* ── Clear button ── */
+.aven-dropdown-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--aven-radius-sm);
+  padding: 2px;
+  color: var(--aven-color-text-muted);
+  cursor: pointer;
+  transition: color var(--aven-transition), background-color var(--aven-transition);
+  outline: none;
+}
+
+.aven-dropdown-clear:hover {
+  color: var(--aven-color-text);
+  background-color: var(--aven-color-bg-muted);
+}
+
+.aven-dropdown-clear:focus-visible {
+  color: var(--aven-color-text);
+  background-color: var(--aven-color-bg-muted);
+}
+
+/* ── Error icon inside trigger ── */
+.aven-dropdown-error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--aven-color-danger);
+  cursor: default;
+  outline: none;
+}
+
+/* ── Error tooltip ── */
+.aven-dropdown-tooltip {
+  position: absolute;
+  bottom: calc(100% + 24px);
+  right: 0;
+  min-width: 160px;
+  max-width: 280px;
+  background-color: var(--aven-color-neutral-800);
+  color: #fff;
+  font-size: var(--aven-text-xs);
+  font-family: var(--aven-font-sans);
+  line-height: var(--aven-leading-sm);
+  padding: var(--aven-spacing-1-5) var(--aven-spacing-2-5);
+  border-radius: var(--aven-radius-md);
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--aven-transition),
+    transform var(--aven-transition);
+  z-index: var(--aven-z-tooltip);
+  text-align: left;
+}
+
+.aven-dropdown-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 4px;
+  border: 5px solid transparent;
+  border-top-color: var(--aven-color-neutral-800);
+}
+
+.aven-dropdown-error-icon:hover .aven-dropdown-tooltip,
+.aven-dropdown-error-icon:focus-visible .aven-dropdown-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Chevron ── */
+.aven-dropdown-chevron {
+  transition: transform var(--aven-transition);
+  flex-shrink: 0;
+}
+
+.aven-dropdown-chevron--open {
+  transform: rotate(180deg);
+}
+
+/* ── Helper text ── */
+.aven-dropdown-helper {
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-xs);
+  color: var(--aven-color-text-muted);
+  margin-top: var(--aven-spacing-1-5);
+  margin-bottom: 0;
+}
+
+/* ── Dropdown content panel (Portal rendered) ── */
+.aven-dropdown-content {
+  background-color: var(--aven-color-bg);
+  border: 1px solid var(--aven-color-border);
+  border-radius: var(--aven-radius-md);
+  box-shadow: var(--aven-shadow-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Search input ── */
+.aven-dropdown-search-wrapper {
+  padding: var(--aven-spacing-2);
+  border-bottom: 1px solid var(--aven-color-border);
+  flex-shrink: 0;
+}
+
+.aven-dropdown-search {
+  width: 100%;
+  height: 2rem;
+  padding: 0 var(--aven-spacing-2-5);
+  border: 1px solid var(--aven-color-border);
+  border-radius: var(--aven-radius-sm);
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  color: var(--aven-color-text);
+  background-color: var(--aven-color-bg);
+  outline: none;
+  transition: border-color var(--aven-transition);
+}
+
+.aven-dropdown-search::placeholder {
+  color: var(--aven-color-text-subtle);
+}
+
+.aven-dropdown-search:focus {
+  border-color: var(--aven-color-primary);
+}
+
+/* ── Loading state ── */
+.aven-dropdown-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--aven-spacing-2);
+  padding: var(--aven-spacing-4);
+  color: var(--aven-color-text-muted);
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+}
+
+.aven-dropdown-loader {
+  animation: aven-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* ── Empty state ── */
+.aven-dropdown-empty {
+  padding: var(--aven-spacing-4);
+  text-align: center;
+  color: var(--aven-color-text-muted);
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+}
+
+/* ── Options list ── */
+.aven-dropdown-list {
+  list-style: none;
+  margin: 0;
+  padding: var(--aven-spacing-1) 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Option item ── */
+.aven-dropdown-option {
+  display: flex;
+  align-items: center;
+  gap: var(--aven-spacing-2);
+  padding: var(--aven-spacing-2) var(--aven-spacing-3);
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  color: var(--aven-color-text);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color var(--aven-duration-fast) var(--aven-ease);
+}
+
+.aven-dropdown-option:hover:not(.aven-dropdown-option--disabled) {
+  background-color: var(--aven-color-bg-subtle);
+}
+
+.aven-dropdown-option--focused:not(.aven-dropdown-option--disabled) {
+  background-color: var(--aven-color-bg-muted);
+}
+
+.aven-dropdown-option--selected {
+  color: var(--aven-color-primary);
+  font-weight: var(--aven-font-medium);
+}
+
+.aven-dropdown-option--selected:not(.aven-dropdown-option--disabled):hover,
+.aven-dropdown-option--selected.aven-dropdown-option--focused {
+  background-color: var(--aven-color-primary-subtle);
+}
+
+.aven-dropdown-option--disabled {
+  color: var(--aven-color-text-subtle);
+  cursor: not-allowed;
+}
+
+/* ── Option label ── */
+.aven-dropdown-option-label {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Single-select checkmark ── */
+.aven-dropdown-option-check {
+  flex-shrink: 0;
+  color: var(--aven-color-primary);
+  margin-left: auto;
+}
+
+/* ── Multi-select checkbox ── */
+.aven-dropdown-checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--aven-color-border-strong);
+  border-radius: var(--aven-radius-sm);
+  flex-shrink: 0;
+  transition:
+    background-color var(--aven-duration-fast) var(--aven-ease),
+    border-color var(--aven-duration-fast) var(--aven-ease);
+}
+
+.aven-dropdown-checkbox--checked {
+  background-color: var(--aven-color-primary);
+  border-color: var(--aven-color-primary);
+  color: var(--aven-color-primary-foreground);
+}

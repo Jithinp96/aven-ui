@@ -6,3 +6,6 @@ export type { InputProps } from './components/Input'
 
 export { TextArea } from './components/TextArea'
 export type { TextAreaProps } from './components/TextArea'
+
+export { Dropdown } from './components/Dropdown'
+export type { DropdownProps, DropdownOption } from './components/Dropdown'

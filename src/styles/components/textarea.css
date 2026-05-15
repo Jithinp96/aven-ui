@@ -1,0 +1,178 @@
+/* ── Root container ── */
+.aven-textarea-root {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.aven-textarea-root--full-width {
+  width: 100%;
+}
+
+.aven-textarea-root--full-width .aven-textarea-wrapper {
+  width: 100%;
+}
+
+/* ── Label ── */
+.aven-textarea-label {
+  display: block;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  font-weight: var(--aven-font-medium);
+  color: var(--aven-color-text);
+  margin-bottom: var(--aven-spacing-1-5);
+}
+
+/* ── Wrapper ── */
+.aven-textarea-wrapper {
+  position: relative;
+  display: flex;
+  background-color: var(--aven-color-bg);
+  border: 1px solid var(--aven-color-border);
+  border-radius: var(--aven-radius-md);
+  transition:
+    border-color var(--aven-transition),
+    box-shadow var(--aven-transition);
+}
+
+.aven-textarea-wrapper:focus-within {
+  border-color: var(--aven-color-primary);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      var(--aven-focus-ring-color);
+}
+
+/* ── Error state ── */
+.aven-textarea-wrapper--error {
+  border-color: var(--aven-color-danger);
+}
+
+.aven-textarea-wrapper--error:focus-within {
+  border-color: var(--aven-color-danger);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      rgb(239 68 68 / 0.25);
+}
+
+/* ── Disabled state ── */
+.aven-textarea-wrapper--disabled {
+  background-color: var(--aven-color-bg-muted);
+  border-color: var(--aven-color-border);
+  cursor: not-allowed;
+}
+
+.aven-textarea-wrapper--disabled .aven-textarea {
+  cursor: not-allowed;
+  color: var(--aven-color-text-muted);
+}
+
+/* ── Textarea element ── */
+.aven-textarea {
+  flex: 1;
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  font-weight: var(--aven-font-normal);
+  color: var(--aven-color-text);
+  line-height: var(--aven-leading-md);
+  padding: var(--aven-spacing-2-5) var(--aven-spacing-3);
+  resize: vertical;
+  min-height: 80px;
+}
+
+.aven-textarea::placeholder {
+  color: var(--aven-color-text-subtle);
+}
+
+/* Push text away from error icon when error is shown */
+.aven-textarea-wrapper--error .aven-textarea {
+  padding-right: calc(var(--aven-spacing-3) + 16px + var(--aven-spacing-3));
+}
+
+/* ── Size variants ── */
+.aven-textarea-wrapper--sm .aven-textarea {
+  font-size: var(--aven-text-xs);
+  padding: var(--aven-spacing-1-5) var(--aven-spacing-2-5);
+}
+
+.aven-textarea-wrapper--sm.aven-textarea-wrapper--error .aven-textarea {
+  padding-right: calc(var(--aven-spacing-2-5) + 16px + var(--aven-spacing-2-5));
+}
+
+.aven-textarea-wrapper--lg .aven-textarea {
+  font-size: var(--aven-text-md);
+  padding: var(--aven-spacing-3) var(--aven-spacing-4);
+}
+
+.aven-textarea-wrapper--lg.aven-textarea-wrapper--error .aven-textarea {
+  padding-right: calc(var(--aven-spacing-4) + 16px + var(--aven-spacing-4));
+}
+
+/* ── Error icon — absolutely positioned right center ── */
+.aven-textarea-error-icon {
+  position: absolute;
+  top: 50%;
+  right: var(--aven-spacing-2-5);
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--aven-color-danger);
+  cursor: default;
+  outline: none;
+}
+
+/* ── Tooltip ── */
+.aven-textarea-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  max-width: 280px;
+  background-color: var(--aven-color-neutral-800);
+  color: #fff;
+  font-size: var(--aven-text-xs);
+  font-family: var(--aven-font-sans);
+  line-height: var(--aven-leading-sm);
+  padding: var(--aven-spacing-1-5) var(--aven-spacing-2-5);
+  border-radius: var(--aven-radius-md);
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--aven-transition),
+    transform var(--aven-transition);
+  z-index: var(--aven-z-tooltip);
+  text-align: left;
+}
+
+/* Tooltip downward arrow */
+.aven-textarea-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 4px;
+  border: 5px solid transparent;
+  border-top-color: var(--aven-color-neutral-800);
+}
+
+.aven-textarea-error-icon:hover .aven-textarea-tooltip,
+.aven-textarea-error-icon:focus-visible .aven-textarea-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Helper text ── */
+.aven-textarea-helper {
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-xs);
+  color: var(--aven-color-text-muted);
+  margin-top: var(--aven-spacing-1-5);
+  margin-bottom: 0;
+}

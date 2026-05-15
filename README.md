@@ -352,6 +352,94 @@ All standard HTML `<input>` attributes (`onChange`, `onBlur`, `type`, `value`, `
 
 ---
 
+### TextArea
+
+A multiline text input with the same label, helper text, and error tooltip behaviour as `Input`. The error info icon is anchored to the top-right corner of the textarea.
+
+```tsx
+import { TextArea } from 'aven-ui'
+```
+
+#### Basic usage
+
+```tsx
+<TextArea placeholder="Write something..." />
+```
+
+#### With label and helper text
+
+```tsx
+<TextArea
+  label="Bio"
+  placeholder="Tell us about yourself..."
+  helperText="Maximum 500 characters."
+/>
+```
+
+#### Error state
+
+Same behaviour as Input — red border, info icon top-right, hover to see the message.
+
+```tsx
+<TextArea
+  label="Description"
+  error="Description must be at least 20 characters."
+/>
+```
+
+#### Resize control
+
+```tsx
+<TextArea resize="none" />       {/* fixed size */}
+<TextArea resize="vertical" />   {/* default */}
+<TextArea resize="horizontal" />
+<TextArea resize="both" />
+```
+
+#### Rows
+
+```tsx
+<TextArea rows={6} label="Message" />
+```
+
+#### Sizes
+
+```tsx
+<TextArea size="sm" label="Small" />
+<TextArea size="md" label="Medium" />  {/* default */}
+<TextArea size="lg" label="Large" />
+```
+
+#### With React Hook Form
+
+```tsx
+const { register, formState: { errors } } = useForm()
+
+<TextArea
+  label="Message"
+  error={errors.message?.message}
+  {...register('message')}
+/>
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label rendered above the textarea |
+| `error` | `string` | — | Error message — triggers red border and hover tooltip |
+| `helperText` | `string` | — | Helper text below textarea (hidden when `error` is set) |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Font size and padding |
+| `resize` | `'none' \| 'vertical' \| 'horizontal' \| 'both'` | `'vertical'` | CSS resize behaviour |
+| `fullWidth` | `boolean` | `false` | Stretches to fill container |
+| `disabled` | `boolean` | `false` | Disables the textarea |
+| `rows` | `number` | — | Number of visible text rows |
+| `className` | `string` | — | Additional CSS classes on the `<textarea>` element |
+
+All standard HTML `<textarea>` attributes are accepted and forwarded.
+
+---
+
 ## License
 
 MIT

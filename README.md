@@ -247,6 +247,111 @@ You can override a design token on a single button instance using `style`:
 
 ---
 
+### Input
+
+A text input component with label, helper text, error state with tooltip, prefix/suffix slots, and full ref forwarding.
+
+```tsx
+import { Input } from 'aven-ui'
+```
+
+#### Basic usage
+
+```tsx
+<Input placeholder="Enter your email" />
+```
+
+#### With label and helper text
+
+```tsx
+<Input
+  label="Email address"
+  placeholder="you@example.com"
+  helperText="We will never share your email."
+/>
+```
+
+#### Error state
+
+Pass an error message via the `error` prop. This turns the border red and shows an info icon on the right. Hovering the icon reveals the error message in a tooltip.
+
+```tsx
+<Input
+  label="Email address"
+  placeholder="you@example.com"
+  error="Please enter a valid email address."
+/>
+```
+
+#### Sizes
+
+```tsx
+<Input size="sm" placeholder="Small" />
+<Input size="md" placeholder="Medium" />   {/* default */}
+<Input size="lg" placeholder="Large" />
+```
+
+#### Prefix and suffix
+
+```tsx
+<Input prefix={<SearchIcon size={16} />} placeholder="Search..." />
+<Input suffix={<CalendarIcon size={16} />} placeholder="Pick a date" />
+```
+
+> When `error` is set, the error info icon replaces the suffix automatically.
+
+#### Full width
+
+```tsx
+<Input fullWidth label="Full name" placeholder="John Doe" />
+```
+
+#### Disabled
+
+```tsx
+<Input disabled label="Read only field" value="Cannot edit" />
+```
+
+#### With React Hook Form
+
+```tsx
+const { register, formState: { errors } } = useForm()
+
+<Input
+  label="Email"
+  placeholder="you@example.com"
+  error={errors.email?.message}
+  {...register('email')}
+/>
+```
+
+#### Ref forwarding
+
+```tsx
+const ref = useRef<HTMLInputElement>(null)
+
+<Input ref={ref} label="Focus me" />
+```
+
+#### Props
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `label` | `string` | — | Label rendered above the input |
+| `error` | `string` | — | Error message — triggers red border and hover tooltip |
+| `helperText` | `string` | — | Helper text below input (hidden when `error` is set) |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Height and font size |
+| `prefix` | `ReactNode` | — | Node rendered on the left side |
+| `suffix` | `ReactNode` | — | Node rendered on the right side (replaced by error icon when `error` is set) |
+| `fullWidth` | `boolean` | `false` | Stretches input to fill its container |
+| `disabled` | `boolean` | `false` | Disables the input |
+| `className` | `string` | — | Additional CSS classes on the `<input>` element |
+| `style` | `CSSProperties` | — | Inline style override |
+
+All standard HTML `<input>` attributes (`onChange`, `onBlur`, `type`, `value`, `defaultValue`, `name`, `required`, `maxLength`, etc.) are accepted and forwarded. `size` and `prefix` from the native HTML spec are omitted in favour of the aven-ui versions above.
+
+---
+
 ## License
 
 MIT

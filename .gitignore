@@ -5,3 +5,5 @@ dist/
 coverage/
 storybook-static/
 *.local
+
+*storybook.log

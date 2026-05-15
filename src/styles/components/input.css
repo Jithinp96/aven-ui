@@ -1,0 +1,191 @@
+/* ── Root container ── */
+.aven-input-root {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.aven-input-root--full-width {
+  width: 100%;
+}
+
+.aven-input-root--full-width .aven-input-wrapper {
+  width: 100%;
+}
+
+/* ── Label ── */
+.aven-input-label {
+  display: block;
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-sm);
+  font-weight: var(--aven-font-medium);
+  color: var(--aven-color-text);
+  margin-bottom: var(--aven-spacing-1-5);
+}
+
+/* ── Wrapper (holds border, background, and icon slots) ── */
+.aven-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: var(--aven-color-bg);
+  border: 1px solid var(--aven-color-border);
+  border-radius: var(--aven-radius-md);
+  transition:
+    border-color var(--aven-transition),
+    box-shadow var(--aven-transition);
+  position: relative;
+}
+
+.aven-input-wrapper:focus-within {
+  border-color: var(--aven-color-primary);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      var(--aven-focus-ring-color);
+}
+
+/* ── Error state ── */
+.aven-input-wrapper--error {
+  border-color: var(--aven-color-danger);
+}
+
+.aven-input-wrapper--error:focus-within {
+  border-color: var(--aven-color-danger);
+  box-shadow:
+    0 0 0 var(--aven-focus-ring-offset) var(--aven-color-bg),
+    0 0 0 calc(var(--aven-focus-ring-offset) + var(--aven-focus-ring-width))
+      rgb(239 68 68 / 0.25);
+}
+
+/* ── Disabled state ── */
+.aven-input-wrapper--disabled {
+  background-color: var(--aven-color-bg-muted);
+  border-color: var(--aven-color-border);
+  cursor: not-allowed;
+}
+
+.aven-input-wrapper--disabled .aven-input {
+  cursor: not-allowed;
+  color: var(--aven-color-text-muted);
+}
+
+/* ── Sizes ── */
+.aven-input-wrapper--sm {
+  height: 2rem;
+  padding: 0 var(--aven-spacing-2-5);
+  border-radius: var(--aven-radius-sm);
+  gap: var(--aven-spacing-1-5);
+}
+
+.aven-input-wrapper--sm .aven-input {
+  font-size: var(--aven-text-xs);
+}
+
+.aven-input-wrapper--md {
+  height: 2.5rem;
+  padding: 0 var(--aven-spacing-3);
+  gap: var(--aven-spacing-2);
+}
+
+.aven-input-wrapper--md .aven-input {
+  font-size: var(--aven-text-sm);
+}
+
+.aven-input-wrapper--lg {
+  height: 3rem;
+  padding: 0 var(--aven-spacing-4);
+  gap: var(--aven-spacing-2-5);
+}
+
+.aven-input-wrapper--lg .aven-input {
+  font-size: var(--aven-text-md);
+}
+
+/* ── Input element ── */
+.aven-input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--aven-font-sans);
+  font-weight: var(--aven-font-normal);
+  color: var(--aven-color-text);
+  line-height: 1;
+}
+
+.aven-input::placeholder {
+  color: var(--aven-color-text-subtle);
+}
+
+/* ── Prefix / Suffix slots ── */
+.aven-input-prefix,
+.aven-input-suffix {
+  display: inline-flex;
+  align-items: center;
+  color: var(--aven-color-text-muted);
+  flex-shrink: 0;
+}
+
+/* ── Error icon ── */
+.aven-input-error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: var(--aven-color-danger);
+  flex-shrink: 0;
+  cursor: default;
+  outline: none;
+}
+
+/* ── Tooltip ── */
+.aven-input-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  min-width: 160px;
+  max-width: 280px;
+  background-color: var(--aven-color-neutral-800);
+  color: #fff;
+  font-size: var(--aven-text-xs);
+  font-family: var(--aven-font-sans);
+  line-height: var(--aven-leading-sm);
+  padding: var(--aven-spacing-1-5) var(--aven-spacing-2-5);
+  border-radius: var(--aven-radius-md);
+  white-space: normal;
+  word-break: break-word;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity var(--aven-transition),
+    transform var(--aven-transition);
+  z-index: var(--aven-z-tooltip);
+  text-align: left;
+}
+
+/* Tooltip downward arrow */
+.aven-input-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 4px;
+  border: 5px solid transparent;
+  border-top-color: var(--aven-color-neutral-800);
+}
+
+.aven-input-error-icon:hover .aven-input-tooltip,
+.aven-input-error-icon:focus-visible .aven-input-tooltip {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Helper text ── */
+.aven-input-helper {
+  font-family: var(--aven-font-sans);
+  font-size: var(--aven-text-xs);
+  color: var(--aven-color-text-muted);
+  margin-top: var(--aven-spacing-1-5);
+  margin-bottom: 0;
+}

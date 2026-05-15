@@ -630,6 +630,154 @@ const fruit = watch('fruit')
 
 ---
 
+### Toast
+
+An imperative notification system. Trigger toasts from anywhere in your app without passing props. Supports success, error, warning, and info types, auto-dismiss, pause-on-hover, and configurable position.
+
+#### Setup
+
+Wrap your app root with `<ToastProvider>` and place `<Toaster>` inside it. Both can go in your root layout — you only need them once.
+
+```tsx
+import { ToastProvider, Toaster } from 'aven-ui'
+
+function App() {
+  return (
+    <ToastProvider>
+      <YourApp />
+      <Toaster />
+    </ToastProvider>
+  )
+}
+```
+
+**Next.js App Router**
+```tsx
+// app/layout.tsx
+import { ToastProvider, Toaster } from 'aven-ui'
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html>
+      <body>
+        <ToastProvider>
+          {children}
+          <Toaster />
+        </ToastProvider>
+      </body>
+    </html>
+  )
+}
+```
+
+#### Usage
+
+```tsx
+import { useToast } from 'aven-ui'
+
+function SaveButton() {
+  const { toast } = useToast()
+
+  const handleSave = async () => {
+    try {
+      await save()
+      toast.success('Changes saved.')
+    } catch {
+      toast.error('Failed to save. Please try again.')
+    }
+  }
+
+  return <button onClick={handleSave}>Save</button>
+}
+```
+
+#### Toast types
+
+```tsx
+toast.success('Profile updated.')
+toast.error('Something went wrong.')   // persistent by default — stays until dismissed
+toast.warning('Your session expires in 5 minutes.')
+toast.info('A new version is available.')
+toast.show('Generic notification.')
+```
+
+#### With title
+
+```tsx
+toast.success('Your file has been uploaded.', { title: 'Upload complete' })
+toast.error('Check the error logs for details.', { title: 'Deployment failed' })
+```
+
+#### Custom duration
+
+```tsx
+toast.success('Quick flash', { duration: 1500 })  // 1.5 seconds
+toast.info('Long notice', { duration: 8000 })      // 8 seconds
+toast.warning('Stays until dismissed', { duration: 0 })  // persistent
+```
+
+> Toasts auto-dismiss after **4 seconds** by default. Error toasts are **persistent by default** — the user must dismiss them manually.
+
+#### Pause on hover
+
+Hovering over a toast pauses its auto-dismiss timer. The timer resumes when the cursor leaves with the remaining time preserved.
+
+#### Programmatic dismiss
+
+```tsx
+const { toast } = useToast()
+const id = toast.info('Processing...')
+
+// later
+toast.dismiss(id)
+```
+
+#### Toaster position
+
+```tsx
+<Toaster position="bottom-right" />  {/* default */}
+<Toaster position="bottom-left" />
+<Toaster position="bottom-center" />
+<Toaster position="top-right" />
+<Toaster position="top-left" />
+<Toaster position="top-center" />
+```
+
+#### Limit visible toasts
+
+```tsx
+<Toaster maxToasts={3} />  {/* show at most 3 at a time — default is 5 */}
+```
+
+#### Props — `<Toaster>`
+
+| Prop | Type | Default | Description |
+|---|---|---|---|
+| `position` | `ToastPosition` | `'bottom-right'` | Where toasts appear on screen |
+| `maxToasts` | `number` | `5` | Maximum number of toasts shown simultaneously |
+
+#### `useToast` API
+
+`useToast()` returns `{ toast }` with the following methods:
+
+| Method | Signature | Default duration | Description |
+|---|---|---|---|
+| `toast.success` | `(message, options?) => id` | 4 s | Success notification |
+| `toast.error` | `(message, options?) => id` | persistent | Error notification |
+| `toast.warning` | `(message, options?) => id` | 4 s | Warning notification |
+| `toast.info` | `(message, options?) => id` | 4 s | Informational notification |
+| `toast.show` | `(message, options?) => id` | 4 s | Default style notification |
+| `toast.dismiss` | `(id: string) => void` | — | Remove a toast by ID |
+
+**`ToastOptions`**
+
+| Field | Type | Description |
+|---|---|---|
+| `title` | `string` | Optional bold title above the message |
+| `duration` | `number` | Auto-dismiss delay in ms. `0` = persistent |
+
+---
+
 ## License
 
 MIT
